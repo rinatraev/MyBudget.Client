@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Главная страница</title>
+  <link rel="stylesheet" href="../styles/mainpage.css">
+  <script src="../scripts/apiCalls.js"></script>
+  <script src="../scripts/mainpage.js" defer></script>
+</head>
+
+<body>
+<div>
+  <button onclick="exit()">Выйти</button>
+
+</div>
+  <p>Добро пожаловать на Главную страницу<span id="firstHeader"></span></p>
+
+  <div id="paginationControls">
+  <span id="pageInfo"></span>
+  <button id="prevPage">Назад</button>
+  <button id="nextPage">Вперёд</button>
+  </div>
+
+  <table id="transactionsTable">
+  <thead>
+    <tr>
+      <th>ТИП</th>
+      <th>КАТЕГОРИЯ</th>
+      <th>ДАТА</th>
+      <th>СУММА</th>
+      <th>КОММЕНТАРИИ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- строки будут добавляться динамически -->
+     
+  </tbody>
+</table>
+</body>
+</html>

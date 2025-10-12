@@ -1,0 +1,49 @@
+#transactionsTable {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed; /* ровные столбцы */
+}
+
+#transactionsTable th,
+#transactionsTable td {
+  border: 1px solid #ddd;
+  padding: 10px 12px; /* общий отступ */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#transactionsTable thead th {
+  position: sticky;
+  top: 0;
+  background: #f8f9fb;
+  z-index: 1;
+  border-bottom: 2px solid #ccc;
+}
+
+#transactionsTable th.right,
+#transactionsTable td.right {
+  text-align: right;
+  padding-right: 18px; 
+}
+
+#transactionsTable th.center,
+#transactionsTable td.center {
+  text-align: center;
+}
+
+/* чуть приятнее визуально */
+#transactionsTable tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+
+#paginationControls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0 12px;
+}
+
+#firstHeader {
+    font-weight: bold;
+}
