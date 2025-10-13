@@ -53,6 +53,7 @@ async function register(username, password) {
   }
 }
 
+//Без параметров
 async function getTransactions(page = 1) {
   const token = localStorage.getItem("accessToken");
   const res = await fetch(`${baseUrl}/transactions?page=${page}&pageSize=15`, {
@@ -65,4 +66,57 @@ async function getTransactions(page = 1) {
   }
 
   return await res.json(); // возвращаем "обёртку" с items, totalPages и т.д.
+}
+//С параметр(ами)ом
+async function getTransactions(page = 1) {
+  const token = localStorage.getItem("accessToken");
+  const res = await fetch(`${baseUrl}/transactions?page=${page}&`, {
+    headers: { "Authorization": `Bearer ${token}` }
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Ошибка ${res.status}: ${text}`);
+  }
+
+  return await res.json(); // возвращаем "обёртку" с items, totalPages и т.д.
+}
+
+async function getCategories(route) {
+  const token = localStorage.getItem("accessToken");
+  if(route !== "by-user"){
+    route = "";
+  }
+  const res = await fetch(`${baseUrl}/categories/${route}`, {
+    headers: { "Authorization": `Bearer ${token}` }
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Ошибка ${res.status}: ${text}`);
+  }
+
+  return await res.json(); // возвращаем "обёртку" категории
+}
+
+async function deleteUser(){
+  const token = localStorage.getItem("accessToken");
+   try {
+    const res = await fetch(`${baseUrl}/auth/login`, {
+      method: "Delete",
+      headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+    });
+
+    if (!res.ok) {
+      // Здесь обрабатываются все статусы, кроме 200–299
+      const errorText = await res.text();
+      throw new Error(`Ошибка ${res.status}: ${errorText}`);
+    }
+    localStorage.removeItemItem("accessToken", token);
+    localStorage.removeItem("username", username);
+    window.location.href="index.html"
+  } catch (err) {
+    console.error("Ошибка при логине:", err);
+    throw err;
+  }
 }

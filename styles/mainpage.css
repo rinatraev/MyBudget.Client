@@ -47,3 +47,11 @@
 #firstHeader {
     font-weight: bold;
 }
+
+#buttonSet{
+  margin-top: 10px;
+}
+
+#buttonDeleteUser{
+  color: red;
+}

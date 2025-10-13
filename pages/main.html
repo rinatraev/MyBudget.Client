@@ -11,10 +11,31 @@
 <body>
 <div>
   <button onclick="exit()">Выйти</button>
+  <button id="buttonDeleteUser" onclick="deleteProfile()">Удалить аккаунт </button>
 
 </div>
+
   <p>Добро пожаловать на Главную страницу<span id="firstHeader"></span></p>
 
+<div class="filterBlock">
+  <label>Период:</label>
+  <input type="date" id="dateFrom">
+  <input type="date" id="dateTo">
+
+  <label>Тип:</label>
+  <select id="typeSelect">
+    <option value="0">Все</option>
+    <option value="1">Доход</option>
+    <option value="2">Расход</option>
+  </select><br>
+ <fieldset id="categoriesFieldset">
+    <legend>Категории:</legend>
+    <!-- чекбоксы будут добавлены динамически -->
+  </fieldset>
+
+  <button id="buttonSet">Применить</button>
+  <button>Все категории</button>
+</div>
   <div id="paginationControls">
   <span id="pageInfo"></span>
   <button id="prevPage">Назад</button>
@@ -33,7 +54,6 @@
   </thead>
   <tbody>
     <!-- строки будут добавляться динамически -->
-     
   </tbody>
 </table>
 </body>

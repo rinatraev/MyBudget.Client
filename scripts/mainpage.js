@@ -7,15 +7,21 @@ let totalPages = 1;
 document.addEventListener("DOMContentLoaded", () => {
   if(needAuthorization()) window.location.href = "login.html";
   firstHeader.innerText += ` ${localStorage.getItem("username") ?? ""}`;
-  loadTransactions();
+  loadTransactions(1);
+  loadCategories();
 });
 
 function exit(){
     if (confirm("Вы точно хотите выйти ?" )){
         localStorage.removeItem("accessToken");
         localStorage.removeItem("username");
-        window.location.href = "login.html";
+        window.location.href = "index.html";
     }
+}
+
+function deleteProfile(){
+    if (confirm("Вы точно хотите удалить свой аккаунт ?" ))
+        deleteUser();
 }
 
 async function loadTransactions(page = 1) {
@@ -23,6 +29,14 @@ async function loadTransactions(page = 1) {
     const data = await getTransactions(page); // вызываем API
     renderTransactions(data.items);
     renderPagination(data.currentPage, data.totalPages);
+
+    const dateFromInput = document.getElementById("dateFrom");
+
+    if (data.earliestDateUtc) {
+      dateFromInput.min = new Date(data.earliestDateUtc)
+        .toISOString()
+        .split("T")[0];
+    }
   } catch (err) {
     console.error(err);
     alert("Не удалось загрузить транзакции: " + err.message);
@@ -87,7 +101,29 @@ document.getElementById("nextPage").addEventListener("click", () => {
   }
 });
 
-// запуск при загрузке страницы
-document.addEventListener("DOMContentLoaded", () => {
-  loadTransactions(1);
-});
+async function loadCategories() {
+  try {
+    const categories = await getCategories("by-user"); // массив категорий
+    const fieldset = document.getElementById("categoriesFieldset");
+
+    // очищаем старые чекбоксы, оставляем legend
+    fieldset.querySelectorAll("label").forEach(el => el.remove());
+
+    categories.forEach(cat => {
+      const label = document.createElement("label");
+      const checkbox = document.createElement("input");
+
+      checkbox.type = "checkbox";
+      checkbox.name = "categories";
+      checkbox.value = cat.id;
+
+      label.appendChild(checkbox);
+      label.append(" " + cat.name);
+
+      fieldset.appendChild(label);
+    });
+  } catch (err) {
+    console.error(err);
+    alert("Не удалось загрузить категории: " + err.message);
+  }
+}

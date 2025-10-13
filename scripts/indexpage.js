@@ -1,4 +1,4 @@
-console.log("Скрипт подключен и работает! loginpage.js");
+console.log("Скрипт подключен и работает! indexpage.js");
 //Элементы страницы, константы и переменные 
 const errorLabel = document.getElementById("messageLabel");
 const borders = document.getElementsByClassName("box");
