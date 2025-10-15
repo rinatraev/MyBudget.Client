@@ -1,0 +1,88 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+#backButton {
+  margin-bottom: 20px;
+  padding: 6px 12px;
+  background-color: #ddd;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#backButton:hover {
+  background-color: #ccc;
+}
+
+.add-category-form,
+h4,
+#newCategoryName,
+#newCategoryType,
+#addCategoryButton {
+  display: block;
+  margin: 10px 0; /* вертикальные отступы */
+}
+
+#newCategoryName,
+#newCategoryType {
+  padding: 6px;
+  width: 250px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+#addCategoryButton {
+  padding: 6px 12px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#addCategoryButton:hover {
+  background-color: #45a049;
+}
+
+#categoriesTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: white;
+}
+
+#categoriesTable th,
+#categoriesTable td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+#categoriesTable th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+#categoriesTable tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+#categoriesTable button {
+  margin: 0 2px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#categoriesTable button:nth-child(1) { background-color: #2196f3; color: white; } /* Редактировать */
+#categoriesTable button:nth-child(2) { background-color: #4caf50; color: white; } /* Сохранить */м
+#categoriesTable button:nth-child(3) { background-color: #f44336; color: white; } /* Удалить */
+
+#categoriesTable button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}

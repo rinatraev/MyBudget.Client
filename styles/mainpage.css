@@ -1,13 +1,13 @@
 #transactionsTable {
   border-collapse: collapse;
   width: 100%;
-  table-layout: fixed; /* ровные столбцы */
+  table-layout: fixed;
 }
 
 #transactionsTable th,
 #transactionsTable td {
   border: 1px solid #ddd;
-  padding: 10px 12px; /* общий отступ */
+  padding: 10px 12px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -32,7 +32,7 @@
   text-align: center;
 }
 
-/* чуть приятнее визуально */
+
 #transactionsTable tbody tr:nth-child(even) {
   background: #fafafa;
 }

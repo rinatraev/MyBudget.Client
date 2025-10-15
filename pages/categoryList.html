@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Главная страница</title>
+  <link rel="stylesheet" href="../styles/categoryList.css" />
+  <script src="../scripts/apiCalls.js"></script>
+  <script src="../scripts/categoryList.js" defer></script>
+</head>
+<body>
+<button id="backButton">Назад</button>
+
+<h4>Добавить категорию</h4>
+<input type="text" id="newCategoryName" placeholder="Наименование" />
+<select id="newCategoryType">
+  <option value="1">Доход</option>
+  <option value="2">Расход</option>
+</select>
+<button id="addCategoryButton">Добавить</button>
+
+<table id="categoriesTable" border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Наименование</th>
+      <th>Тип</th>
+      <th>Операции</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- строки будут подгружаться динамически -->
+  </tbody>
+</table>
+</body> 
+</html> 

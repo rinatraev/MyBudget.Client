@@ -1,60 +1,62 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Главная страница</title>
-  <link rel="stylesheet" href="../styles/mainpage.css">
+  <link rel="stylesheet" href="../styles/mainpage.css" />
   <script src="../scripts/apiCalls.js"></script>
   <script src="../scripts/mainpage.js" defer></script>
 </head>
-
 <body>
-<div>
-  <button onclick="exit()">Выйти</button>
-  <button id="buttonDeleteUser" onclick="deleteProfile()">Удалить аккаунт </button>
 
-</div>
+  <div>
+    <button onclick="exit()">Выйти</button>
+    <button id="buttonDeleteUser" onclick="deleteProfile()">Удалить аккаунт</button>
+  </div>
 
-  <p>Добро пожаловать на Главную страницу<span id="firstHeader"></span></p>
+  <p>Добро пожаловать на Главную страницу <span id="firstHeader"></span></p>
 
-<div class="filterBlock">
-  <label>Период:</label>
-  <input type="date" id="dateFrom">
-  <input type="date" id="dateTo">
+  <div class="filterBlock">
+    <label>Период:</label>
+    <input type="date" id="dateFrom" />
+    <input type="date" id="dateTo" />
 
-  <label>Тип:</label>
-  <select id="typeSelect">
-    <option value="0">Все</option>
-    <option value="1">Доход</option>
-    <option value="2">Расход</option>
-  </select><br>
- <fieldset id="categoriesFieldset">
-    <legend>Категории:</legend>
-    <!-- чекбоксы будут добавлены динамически -->
-  </fieldset>
+    <label>Тип:</label>
+    <select id="typeSelect">
+      <option value="0">Все</option>
+      <option value="1">Доход</option>
+      <option value="2">Расход</option>
+    </select>
+    <br/>
 
-  <button id="buttonSet">Применить</button>
-  <button>Все категории</button>
-</div>
+    <fieldset id="categoriesFieldset">
+      <legend>Категории:</legend>
+      <!-- чекбоксы будут добавлены динамически -->
+    </fieldset>
+    <button id="buttonSet" onclick="loadTransactions()">Показать</button>
+    <button id="buttonReset" onclick="resetFilters()">Сбросить</button>
+    <button id="buttonAddTransaction">Добавить запись</button>
+    <button id="buttonNavigateCategoryList" onclick="navigateToCategoryList()">Все категории</button>
+  </div>
+
   <div id="paginationControls">
-  <span id="pageInfo"></span>
-  <button id="prevPage">Назад</button>
-  <button id="nextPage">Вперёд</button>
+    <span id="pageInfo"></span>
+    <button id="prevPage">Назад</button>
+    <button id="nextPage">Вперёд</button>
   </div>
 
   <table id="transactionsTable">
-  <thead>
-    <tr>
-      <th>ТИП</th>
-      <th>КАТЕГОРИЯ</th>
-      <th>ДАТА</th>
-      <th>СУММА</th>
-      <th>КОММЕНТАРИИ</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- строки будут добавляться динамически -->
-  </tbody>
-</table>
-</body>
+    <thead>
+      <tr>
+        <th>ТИП</th>
+        <th>КАТЕГОРИЯ</th>
+        <th>ДАТА</th>
+        <th>СУММА</th>
+        <th>КОММЕНТАРИИ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- строки будут добавляться динамически -->
+    </tbody>
+  </table>
 </html>
