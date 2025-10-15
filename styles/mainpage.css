@@ -3,6 +3,15 @@
   width: 100%;
   table-layout: fixed;
 }
+button{
+  margin-bottom: 20px;
+  padding: 6px 12px;
+  background-color: #ddd;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 
 #transactionsTable th,
 #transactionsTable td {
